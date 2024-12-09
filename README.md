@@ -47,8 +47,8 @@ The Recycling Robot project demonstrates how a mobile robot can learn to efficie
 All these dynamics are captured in a finite Markov Decision Process (MDP), fully specified by:
 - **States**: {High, Low}
 - **Actions**: {Search, Wait, Recharge (Low only)}
-- **Transition probabilities**: $ p(s' | s, a) $
-- **Rewards**: $ r(s, a, s') $
+- **Transition probabilities**: $p(s' | s, a)$
+- **Rewards**: $r(s, a, s')$
 
 
 | s    | a         | s'   | p(s' \| s, a) | r(s, a, s') |
@@ -80,15 +80,15 @@ Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s,
 $$
 
 where:
-- $ \alpha $ is the learning rate (how fast we update our beliefs about the environment).
-- $ \gamma $ is the discount factor (how much future rewards matter).
-- $ r $ is the immediate reward received.
-- $ s' $ is the next state after taking action $ a $ in state $ s $.
+- $\alpha$ is the learning rate (how fast we update our beliefs about the environment).
+- $\gamma$ is the discount factor (how much future rewards matter).
+- $r$ is the immediate reward received.
+- $s'$ is the next state after taking action $a$ in state $s$.
 
 ### Epsilon-Greedy Policy
 
 To balance exploration and exploitation:
-- With probability $\epsilon $, the robot takes a random action.
+- With probability $\epsilon$, the robot takes a random action.
 - With probability $1 - \epsilon$, the robot chooses the action with the highest current Q-value.
 
 
