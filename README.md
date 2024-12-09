@@ -31,24 +31,24 @@ The Recycling Robot project demonstrates how a mobile robot can learn to efficie
   - Recharging at Low transitions the robot back to High energy without immediate gains, but enables more future searches.
 
 - **Transition Probabilities**:
-  - From **High** energy, searching can lower the battery level with probability \(1 - \alpha\).
+  - From **High** energy, searching can lower the battery level with probability $1 - \alpha$.
   - From **Low** energy, searching can:
-    - Recharge the battery to High with probability \(\beta\).
-    - Deplete the battery (requiring rescue) with probability \(1 - \beta\).
+    - Recharge the battery to High with probability $\beta$.
+    - Deplete the battery (requiring rescue) with probability $1 - \beta$.
     - If not depleted, remain in Low state.
   
   Recharging from Low to High is deterministic and safe.
 
 ### Parameters and Notation
 
-- \(r_{search}\): Expected reward from searching (e.g., number of cans found).
-- \(r_{wait}\): Expected reward while waiting (often smaller than \(r_{search}\)).
+- $r_{search}$: Expected reward from searching (e.g., number of cans found).
+- $r_{wait}$: Expected reward while waiting (often smaller than $r_{search}$).
 
 All these dynamics are captured in a finite Markov Decision Process (MDP), fully specified by:
 - **States**: {High, Low}
 - **Actions**: {Search, Wait, Recharge (Low only)}
-- **Transition probabilities**: \( p(s' | s, a) \)
-- **Rewards**: \( r(s, a, s') \)
+- **Transition probabilities**: $ p(s' | s, a) $
+- **Rewards**: $ r(s, a, s') $
 
 
 | s    | a         | s'   | p(s' \| s, a) | r(s, a, s') |
@@ -69,27 +69,27 @@ All these dynamics are captured in a finite Markov Decision Process (MDP), fully
 
 ## Implementation Details
 
-We implement Q-learning to estimate the action-value function \(Q(s,a)\) for each state-action pair. Over multiple episodes of interaction, the robot improves its policy, converging to near-optimal behavior.
+We implement Q-learning to estimate the action-value function $Q(s,a)$ for each state-action pair. Over multiple episodes of interaction, the robot improves its policy, converging to near-optimal behavior.
 
 ### Q-Learning Update Rule
 
 The Q-learning update for each step is:
 
-\[
+$$
 Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
-\]
+$$
 
 where:
-- \( \alpha \) is the learning rate (how fast we update our beliefs about the environment).
-- \( \gamma \) is the discount factor (how much future rewards matter).
-- \( r \) is the immediate reward received.
-- \( s' \) is the next state after taking action \( a \) in state \( s \).
+- $ \alpha $ is the learning rate (how fast we update our beliefs about the environment).
+- $ \gamma $ is the discount factor (how much future rewards matter).
+- $ r $ is the immediate reward received.
+- $ s' $ is the next state after taking action $ a $ in state $ s $.
 
 ### Epsilon-Greedy Policy
 
 To balance exploration and exploitation:
-- With probability \(\epsilon\), the robot takes a random action.
-- With probability \(1 - \epsilon\), the robot chooses the action with the highest current Q-value.
+- With probability $\epsilon $, the robot takes a random action.
+- With probability $1 - \epsilon$, the robot chooses the action with the highest current Q-value.
 
 
 ## Results and Analysis
