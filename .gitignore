@@ -1,0 +1,6 @@
+# Ignore the pycache folder (Python cache files)
+__pycache__/
+
+# Ignore compiled Python files (.pyc and .pyo) generated during execution
+*.pyc
+*.pyo
