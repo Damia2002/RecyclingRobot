@@ -90,7 +90,7 @@ To balance exploration and exploitation:
 
 ## Results and Analysis
 
-After training, the Q-table shows the learned values for each state-action pair. An example configuration might yield results like:
+After training, the Q-table shows the learned values for each state-action pair. An example configuration might yield results like (See [robot_demo.ipynb](robot_demo.ipynb)):
 
 | State | Search (Q) | Wait (Q) | Recharge (Q) |
 |-------|-------------|----------|--------------|
