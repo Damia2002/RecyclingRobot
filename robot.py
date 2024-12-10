@@ -87,8 +87,8 @@ class RecyclingRobot:
                 # Transition to the next state
                 state = next_state
 
-                # Terminate if recharging or rescue occurred
-                if state == "high" and action == "recharge" or reward == -3:
+                # Terminate if rescue occurred
+                if reward == -3:
                     break
         print("Average reward per episode:", np.mean(self.episode_rewards))
 

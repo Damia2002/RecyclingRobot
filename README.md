@@ -90,12 +90,9 @@ To balance exploration and exploitation:
 
 ## Results and Analysis
 
-After training, the Q-table shows the learned values for each state-action pair. The updated results are as follows (See [robot_demo.ipynb](robot_demo.ipynb)):
+After training, the Q-table shows the learned values for each state-action pair. 
+Results are as follows: See [robot_demo.ipynb](robot_demo.ipynb).
 
-| State | Search (Q) | Wait (Q) | Recharge (Q) |
-|-------|-------------|----------|--------------|
-| High  | 18.06       | 17.16    | N/A          |
-| Low   | 15.03       | 15.25    | 16.48        |
 
 ### Interpretation
 
