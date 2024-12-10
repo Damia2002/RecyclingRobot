@@ -46,7 +46,7 @@ class RecyclingRobot:
             
         elif state == "low":
                 if action == "search":
-                    if np.random.rand() < 1 - self.prob_beta:  
+                    if np.random.rand() < self.prob_beta:  
                         return "low", self.r_search 
                     else: 
                         return "high", -3  # After saving, it returns to high
