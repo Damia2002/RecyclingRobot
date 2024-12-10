@@ -90,7 +90,7 @@ To balance exploration and exploitation:
 
 ## Results and Analysis
 
-After training, the Q-table shows the learned values for each state-action pair. An example configuration might yield results like (See [robot_demo.ipynb](robot_demo.ipynb)):
+After training, the Q-table shows the learned values for each state-action pair. The updated results are as follows (See [robot_demo.ipynb](robot_demo.ipynb)):
 
 | State | Search (Q) | Wait (Q) | Recharge (Q) |
 |-------|-------------|----------|--------------|
@@ -99,26 +99,30 @@ After training, the Q-table shows the learned values for each state-action pair.
 
 ### Interpretation
 
-- **High State**:  
-  The Q-value for **Search** is highest. Since the robot has ample energy, searching is beneficial—greater chances of finding cans outweigh the moderate risk of lowering battery to Low.
-  
-- **Low State**:  
-  When the battery is low, the action **Recharge** yields the highest Q-value. This makes intuitive sense: by recharging, the robot returns to High energy, enabling more profitable searching in the future.  
-  **Wait** is a safe but not the most profitable action. It slightly outperforms searching at Low energy because searching risks the -3 penalty if the battery depletes completely.  
+#### **High State**:  
+The Q-value for **Search** is the highest. This suggests that when the robot has ample energy, the most beneficial action is to search for cans, maximizing rewards at a manageable energy risk. **Wait** is slightly less beneficial but remains a reasonable action due to its low risk.
 
-Overall, the learned policy aligns with common sense:  
-- In **High** energy states, be proactive and search.  
-- In **Low** energy states, ensure future viability by recharging.
+#### **Low State**:  
+In a low-energy state, **Recharge** has the highest Q-value. This aligns with intuitive strategies: the robot prioritizes replenishing its energy to return to a high-energy state, enabling more profitable actions in subsequent steps.  
+- **Wait** performs slightly better than **Search**, as searching in a low-energy state risks depleting the battery and incurring a penalty.  
+- **Search**, while still viable, is less favorable because of the higher risk.
 
-### Average Reward per Episode
+### Updated Policy Insights
 
-After training (e.g., for 10,000 episodes), the average reward per episode stabilizes at a positive value, reflecting the efficiency and risk management strategy the robot has learned.
+The policy learned by the robot can be summarized as follows:
+- In **High Energy States**:  
+  - Proactively search for cans to maximize rewards.
+- In **Low Energy States**:  
+  - Prioritize recharging to ensure future viability and reduce the risk of penalties.
+
+### Q-Values Visualization
+
+The updated Q-value plot is shown below. It illustrates the robot's learned preferences for different actions across the states:
 
 <div style="text-align: center;">
     <img src="image/qvalues.png" alt="Q-Values Plot" width="500">
 </div>
 
-The plot above visualizes the final Q-values. It highlights how different actions are preferred in different states, according to the learned optimal policy.
 
 ---
 
