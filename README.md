@@ -128,7 +128,7 @@ The plot above visualizes the final Q-values. It highlights how different action
    Make sure you have Python 3 and `numpy`, `pandas`, `matplotlib`, and `tqdm` installed.
    
 2. **Run the Training**:
-   Execute the provided Python script and Jupyter notebook to train the Q-learning agent. Adjust hyperparameters like `alpha`, `gamma`, `epsilon`, `episodes` to see how they influence learning.
+   Execute the provided Python script and Jupyter notebook to train the Q-learning agent. Adjust parameters to see how they influence learning.
 
 3. **View the Results**:
    After training, the script prints out the average reward and displays the Q-table. You can also visualize the Q-values to understand the learned policy.
