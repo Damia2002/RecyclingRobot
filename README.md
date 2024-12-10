@@ -24,11 +24,6 @@ The Recycling Robot project demonstrates how a mobile robot can learn to efficie
   - From **High**: {**search**, **wait**}.
   - From **Low**: {**search**, **wait**, **recharge**}.
 
-- **Rewards**:
-  - Collecting cans provides a positive expected reward (e.g., +1 per can found).
-  - Depleting the battery leads to a rescue operation with a **-3** reward penalty.
-  - Waiting is typically low-risk but yields lower long-term returns.
-  - Recharging at Low transitions the robot back to High energy without immediate gains, but enables more future searches.
 
 - **Transition Probabilities**:
   - From **High** energy, searching can lower the battery level with probability $1 - \alpha$.
