@@ -37,23 +37,23 @@ class RecyclingRobot:
         """
         if state == "high":
             if action == "search":
-                if np.random.rand() < self.prob_alpha:  # Probability α
+                if np.random.rand() < self.prob_alpha:  
                     return "high", self.r_search  
                 else:
-                    return "low", self.r_search  # Battery depleted
+                    return "low", self.r_search  
             elif action == "wait":
                 return "high", self.r_wait  
             
         elif state == "low":
                 if action == "search":
-                    if np.random.rand() < self.prob_beta:  # Probability β
-                        return "high", self.r_search  
-                    else:
+                    if np.random.rand() < 1 - self.prob_beta:  
+                        return "low", self.r_search 
+                    else: 
                         return "high", -3  # After saving, it returns to high
                 elif action == "wait":
                     return "low", self.r_wait
                 elif action == "recharge":
-                    return "high", 0  # Recharge successfully
+                    return "high", 0  
 
         raise ValueError("Invalid state-action pair.")
 

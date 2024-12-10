@@ -26,13 +26,14 @@ The Recycling Robot project demonstrates how a mobile robot can learn to efficie
 
 
 - **Transition Probabilities**:
-  - From **High** energy, searching can lower the battery level with probability $1 - \alpha$.
+  - From **High** energy, searching can: 
+    - Lower the battery level with probability $1 - \alpha$.
+    - Remain in High state with probability $\alpha$..
   - From **Low** energy, searching can:
-    - Recharge the battery to High with probability $\beta$.
     - Deplete the battery (requiring rescue) with probability $1 - \beta$.
-    - If not depleted, remain in Low state.
+    - Remain in Low state with probability $\beta$.
   
-  Recharging from Low to High is deterministic and safe.
+  Recharging from Low to High is deterministic.
 
 ### Parameters and Notation
 
@@ -89,12 +90,12 @@ To balance exploration and exploitation:
 
 ## Results and Analysis
 
-After training, the Q-table shows the learned values for each state-action pair. An example configuration might yield results like (See [robot_demo.ipynb](robot_demo.ipynb)):
+After training, the Q-table shows the learned values for each state-action pair. An example configuration might yield results like:
 
 | State | Search (Q) | Wait (Q) | Recharge (Q) |
 |-------|-------------|----------|--------------|
-| High  | 18.12       | 17.11    | N/A          |
-| Low   | 16.03       | 15.22    | 16.34        |
+| High  | 18.06       | 17.16    | N/A          |
+| Low   | 15.03       | 15.25    | 16.48        |
 
 ### Interpretation
 
